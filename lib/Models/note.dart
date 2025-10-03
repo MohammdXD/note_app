@@ -9,7 +9,6 @@ class Note {
     return {'id': id, 'title': title, 'content': content};
   }
 
-  // Take the map from data base and retreve map object
   factory Note.fromMap(Map<String, dynamic> map) {
     return Note(id: map['id'], title: map['title'], content: map['content']);
   }

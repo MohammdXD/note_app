@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/Models/note.dart';
+import 'package:note_app/Screens/detales_page_note.dart';
 import 'package:note_app/Servies/DataBase_Helper.dart';
 
 class NotePage extends StatefulWidget {
@@ -155,15 +157,45 @@ class _NotePageState extends State<NotePage> {
     );
   }
 
+  int _selectedIndex = 0;
+
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(0xff152e6a),
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           title: const Text(
-            'Note Application',
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            'My Notes',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
-          backgroundColor: Colors.blue,
+          actions: [
+            ElevatedButton.icon(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  Color(0xff152e6a),
+                ),
+                shape: MaterialStateProperty.all<LinearBorder>(
+                  LinearBorder.none,
+                ),
+                elevation: MaterialStateProperty.all<double>(0),
+                shadowColor: MaterialStateProperty.all<Color>(
+                  Colors.transparent,
+                ),
+              ),
+              label: Text(
+                "Add New",
+                style: TextStyle(
+                  color: Colors.blueGrey,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              icon: Icon(Icons.add, color: Colors.blueGrey),
+              onPressed: _addNoteDialog,
+            ),
+          ],
+          backgroundColor: Color(0xff152e6a),
         ),
         body: notes.isEmpty
             ? const Center(
@@ -176,40 +208,80 @@ class _NotePageState extends State<NotePage> {
                 children: [
                   SizedBox(height: 20),
                   Expanded(
-                    child: ListView.builder(
+                    child: MasonryGridView.builder(
+                      padding: const EdgeInsets.all(12),
+                      gridDelegate:
+                          const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2, // 2 columns
+                          ),
+                      mainAxisSpacing: 12,
+                      crossAxisSpacing: 12,
                       itemCount: notes.length,
                       itemBuilder: (context, index) {
                         final note = notes[index];
-                        return Card(
-                          margin: EdgeInsets.symmetric(
-                            vertical: 5,
-                            horizontal: 15,
-                          ),
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: ListTile(
-                            title: Text(
-                              note.title,
-                              style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
+
+                        final gradients = [
+                          [Colors.teal, Colors.greenAccent],
+                          [Colors.amber, Colors.orange],
+                          [Colors.cyan, Colors.teal],
+                          [Colors.indigo, Colors.blueAccent],
+                        ];
+                        final gradient = gradients[index % gradients.length];
+
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const DetalesPageNote(),
+                                settings: RouteSettings(arguments: note),
                               ),
+                            );
+                          },
+                          onLongPress: () {
+                            if (note.id != null) {
+                              _deleteNote(note.id!);
+                            }
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(14),
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: gradient,
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
+                              borderRadius: BorderRadius.circular(16),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.15),
+                                  blurRadius: 6,
+                                  offset: const Offset(2, 4),
+                                ),
+                              ],
                             ),
-                            subtitle: Padding(
-                              padding: const EdgeInsets.only(top: 6),
-                              child: Text(
-                                note.content,
-                                style: const TextStyle(fontSize: 15),
-                              ),
-                            ),
-                            trailing: IconButton(
-                              icon: const Icon(
-                                Icons.delete,
-                                color: Colors.redAccent,
-                              ),
-                              onPressed: () => _deleteNote(note.id!),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  note.title,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  note.content,
+                                  style: const TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         );
@@ -219,9 +291,53 @@ class _NotePageState extends State<NotePage> {
                 ],
               ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.blue,
-          child: const Icon(Icons.add),
-          onPressed: _addNoteDialog,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(50),
+          ),
+          backgroundColor: Color(0xff0a3697),
+          child: const Icon(Icons.edit_outlined, color: Colors.white),
+          onPressed: () {},
+        ),
+
+        bottomNavigationBar: Container(
+          color: Color(0xff152e6a),
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30.0),
+              topRight: Radius.circular(30.0),
+            ),
+            child: BottomNavigationBar(
+              backgroundColor: Color(0xFF092462),
+              elevation: 0,
+              currentIndex: _selectedIndex,
+              type: BottomNavigationBarType.fixed,
+              selectedItemColor: Colors.white,
+              unselectedItemColor: Colors.white,
+              onTap: (index) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              },
+              items: [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.notifications_none_outlined),
+                  label: "",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.search_outlined),
+                  label: "",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.credit_card),
+                  label: "",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.settings_outlined),
+                  label: "",
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
