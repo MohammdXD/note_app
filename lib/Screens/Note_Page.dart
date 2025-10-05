@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note_app/Models/note.dart';
 import 'package:note_app/Screens/detales_page_note.dart';
+import 'package:note_app/Screens/setting_page.dart';
 import 'package:note_app/Servies/DataBase_Helper.dart';
+import 'package:note_app/generated/l10n.dart';
 
 class NotePage extends StatefulWidget {
   const NotePage({super.key});
@@ -100,7 +102,7 @@ class _NotePageState extends State<NotePage> {
                           value!.isEmpty ? 'Please enter a title' : null,
                       controller: Titlecontroller,
                       decoration: InputDecoration(
-                        labelText: "Title",
+                        labelText: S.of(context).NoteTitle,
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                         prefixIcon: Icon(Icons.title),
                         filled: true,
@@ -118,7 +120,7 @@ class _NotePageState extends State<NotePage> {
                       controller: Contactcontroller,
                       maxLines: 3,
                       decoration: InputDecoration(
-                        labelText: "Content",
+                        labelText: S.of(context).NoteContent,
                         floatingLabelBehavior: FloatingLabelBehavior.never,
                         prefixIcon: const Icon(Icons.notes),
                         filled: true,
@@ -140,7 +142,7 @@ class _NotePageState extends State<NotePage> {
                   _submitNote();
                 },
                 icon: Icon(Icons.add),
-                label: Text("Add Note"),
+                label: Text(S.of(context).add),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.blue,
                   minimumSize: Size(double.infinity, 50),
@@ -165,8 +167,8 @@ class _NotePageState extends State<NotePage> {
         backgroundColor: Color(0xff152e6a),
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text(
-            'My Notes',
+          title: Text(
+            S.of(context).title,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
           actions: [
@@ -184,7 +186,7 @@ class _NotePageState extends State<NotePage> {
                 ),
               ),
               label: Text(
-                "Add New",
+                S.of(context).add,
                 style: TextStyle(
                   color: Colors.blueGrey,
                   fontSize: 20,
@@ -198,9 +200,9 @@ class _NotePageState extends State<NotePage> {
           backgroundColor: Color(0xff152e6a),
         ),
         body: notes.isEmpty
-            ? const Center(
+            ? Center(
                 child: Text(
-                  "No notes yet. Tap + to add one!",
+                  S.of(context).backNote,
                   style: TextStyle(fontSize: 16, color: Colors.grey),
                 ),
               )
@@ -290,52 +292,90 @@ class _NotePageState extends State<NotePage> {
                   ),
                 ],
               ),
-        floatingActionButton: FloatingActionButton(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(50),
-          ),
-          backgroundColor: Color(0xff0a3697),
-          child: const Icon(Icons.edit_outlined, color: Colors.white),
-          onPressed: () {},
-        ),
-
-        bottomNavigationBar: Container(
-          color: Color(0xff152e6a),
-          child: ClipRRect(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30.0),
-              topRight: Radius.circular(30.0),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Container(
+            width: 70,
+            height: 70,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Color(0xff0a3697),
             ),
-            child: BottomNavigationBar(
-              backgroundColor: Color(0xFF092462),
-              elevation: 0,
-              currentIndex: _selectedIndex,
-              type: BottomNavigationBarType.fixed,
-              selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.white,
-              onTap: (index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              },
-              items: [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.notifications_none_outlined),
-                  label: "",
+            child: const Icon(Icons.edit_outlined, color: Colors.white),
+          ),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+
+        bottomNavigationBar: ClipRRect(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(30.0),
+          ),
+          child: BottomAppBar(
+            color: const Color(0xFF092462),
+            elevation: 0,
+            child: Container(
+              height: 70,
+              decoration: BoxDecoration(
+                color: Color(0xFF092462),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.search_outlined),
-                  label: "",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.credit_card),
-                  label: "",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.settings_outlined),
-                  label: "",
-                ),
-              ],
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.notifications_none_outlined,
+                      size: 32,
+                      color: _selectedIndex == 0
+                          ? Colors.white
+                          : Colors.white70,
+                    ),
+                    onPressed: () => setState(() => _selectedIndex = 0),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.search_outlined,
+                      size: 32,
+                      color: _selectedIndex == 1
+                          ? Colors.white
+                          : Colors.white70,
+                    ),
+                    onPressed: () => setState(() => _selectedIndex = 1),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.credit_card,
+                      size: 32,
+                      color: _selectedIndex == 2
+                          ? Colors.white
+                          : Colors.white70,
+                    ),
+                    onPressed: () => setState(() => _selectedIndex = 2),
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.settings_outlined,
+                      size: 32,
+                      color: _selectedIndex == 3
+                          ? Colors.white
+                          : Colors.white70,
+                    ),
+                    onPressed: () {
+                      setState(() => _selectedIndex = 0);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SettingsPage()),
+                      );
+                    },
+                  ),
+
+                  SizedBox(width: 50),
+                ],
+              ),
             ),
           ),
         ),

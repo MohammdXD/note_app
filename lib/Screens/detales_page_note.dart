@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:note_app/Models/note.dart';
+import 'package:note_app/generated/l10n.dart';
 
 class DetalesPageNote extends StatelessWidget {
   const DetalesPageNote({super.key});
@@ -26,7 +27,7 @@ class DetalesPageNote extends StatelessWidget {
         title: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 70),
           child: Text(
-            "Note Details",
+            S.of(context).titleDetails,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
         ),

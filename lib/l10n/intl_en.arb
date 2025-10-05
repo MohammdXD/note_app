@@ -1,1 +1,22 @@
-{}
+{
+  "title": "My Notes",
+  "add": "Add New",
+  "backNote": "No notes yet Tap + to add one",
+  "NoteTitle": "Note Title",
+  "NoteContent": "Note Content",
+  "addNote": "Add Note",
+  "titleDetails": "My Notes",
+  "settings": "Settings",
+  "language": "language",
+  "title_splash1": "Organize Your Thoughts",
+  "description_splash1": "Capture ideas our intuitive note-taking app",
+  "title_splash2": "Stay Productive",
+  "description_splash2": "Manage notes in one beautiful interface",
+  "title_splash3": "Sync Across Devices",
+  "description_splash3": "Access your notes anywhere, anytime",
+  "title_splash4": "Get Started",
+  "description_splash4": "Begin your journey to better organization",
+  "Skip": "Skip",
+  "Next": "Next",
+  "Start": "Start"
+}

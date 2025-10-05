@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:note_app/Provider/locale_provider.dart';
 import 'package:note_app/Screens/Note_Page.dart';
 import 'package:note_app/Screens/detales_page_note.dart';
 import 'package:note_app/Screens/welcom_page.dart';
 import 'package:note_app/generated/l10n.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => LocaleProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class Routes {
@@ -20,7 +27,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localeProvider = Provider.of<LocaleProvider>(context);
     return MaterialApp(
+      locale: localeProvider.locale,
       localizationsDelegates: [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -37,7 +46,7 @@ class MyApp extends StatelessWidget {
         Routes.detales_page_note: (context) => DetalesPageNote(),
         Routes.note: (context) => NotePage(),
       },
-      home: WelcomPage(),
+      home: SafeArea(child: WelcomPage()),
     );
   }
 }
