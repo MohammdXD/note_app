@@ -33,5 +33,6 @@
   "m_ago": "m ago",
   "h_ago": "h ago",
   "d_ago": "d ago",
-  "Yesterday": "Yesterday"
+  "Yesterday": "Yesterday",
+  "Notedeleted": "Note deleted"
 }

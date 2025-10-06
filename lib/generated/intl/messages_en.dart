@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "Next": MessageLookupByLibrary.simpleMessage("Next"),
     "NoteContent": MessageLookupByLibrary.simpleMessage("Note Content"),
     "NoteTitle": MessageLookupByLibrary.simpleMessage("Note Title"),
+    "Notedeleted": MessageLookupByLibrary.simpleMessage("Note deleted"),
     "Skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "Start": MessageLookupByLibrary.simpleMessage("Start"),
     "Yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),

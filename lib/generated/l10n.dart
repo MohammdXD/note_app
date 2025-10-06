@@ -298,6 +298,16 @@ class S {
   String get Yesterday {
     return Intl.message('Yesterday', name: 'Yesterday', desc: '', args: []);
   }
+
+  /// `Note deleted`
+  String get Notedeleted {
+    return Intl.message(
+      'Note deleted',
+      name: 'Notedeleted',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

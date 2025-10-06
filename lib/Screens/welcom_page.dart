@@ -23,7 +23,6 @@ class _WelcomPageState extends State<WelcomPage> {
     "assest/images/moushen.png",
   ];
 
-  // Remove late final and initialize in build method instead
   List<List<String>> getSlideContent(BuildContext context) {
     return [
       [S.of(context).title_splash1, S.of(context).description_splash1],
@@ -52,7 +51,6 @@ class _WelcomPageState extends State<WelcomPage> {
 
   @override
   Widget build(BuildContext context) {
-    // Get the translated content inside build method where context is available
     final slideContent = getSlideContent(context);
 
     return Scaffold(

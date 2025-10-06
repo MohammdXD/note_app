@@ -63,7 +63,7 @@ class _NotePageState extends State<NotePage> {
     _refreshNotes();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Note deleted'),
+        content: Text(S.of(context).Notedeleted),
         backgroundColor: Colors.red.shade900,
       ),
     );

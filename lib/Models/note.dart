@@ -36,7 +36,6 @@ class Note {
     );
   }
 
-  // Convert to JSON string
   String toJson() {
     return json.encode({
       'id': id,
@@ -47,13 +46,11 @@ class Note {
     });
   }
 
-  // Create from JSON string
   factory Note.fromJson(String jsonString) {
     final map = Map<String, dynamic>.from(json.decode(jsonString));
     return Note.fromMap(map);
   }
 
-  // Copy with method for updates
   Note copyWith({String? title, String? content}) {
     return Note(
       id: id,
