@@ -14,6 +14,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xff152e6a),
       appBar: AppBar(
+        leading: BackButton(color: Colors.white),
         backgroundColor: const Color(0xff152e6a),
         elevation: 0,
         title: Text(

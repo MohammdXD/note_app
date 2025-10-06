@@ -203,6 +203,31 @@ class S {
   String get Start {
     return Intl.message('Start', name: 'Start', desc: '', args: []);
   }
+
+  /// `Update`
+  String get update {
+    return Intl.message('Update', name: 'update', desc: '', args: []);
+  }
+
+  /// `Please enter a title`
+  String get EnterTitle {
+    return Intl.message(
+      'Please enter a title',
+      name: 'EnterTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a content`
+  String get EnterContent {
+    return Intl.message(
+      'Please enter a content',
+      name: 'EnterContent',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

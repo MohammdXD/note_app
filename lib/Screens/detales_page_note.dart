@@ -16,16 +16,17 @@ class DetalesPageNote extends StatelessWidget {
       [Colors.indigo, Colors.blueAccent],
     ];
     final gradient =
-        gradients[note.id != null ? note.id! % gradients.length : 0];
+        gradients[note.id != null ? _getHash(note.id!) % gradients.length : 0];
 
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
+        leading: BackButton(color: Colors.white),
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.white),
         title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 70),
+          padding: const EdgeInsets.symmetric(horizontal: 60),
           child: Text(
             S.of(context).titleDetails,
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -47,6 +48,15 @@ class DetalesPageNote extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Text(
+                "Created: ${_formatDate(note.createdAt)}",
+                style: TextStyle(fontSize: 14, color: Colors.white70),
+              ),
+              Text(
+                "Updated: ${_formatDate(note.updatedAt)}",
+                style: TextStyle(fontSize: 14, color: Colors.white70),
+              ),
+              SizedBox(height: 20),
               // Title
               Text(
                 note.title,
@@ -57,17 +67,6 @@ class DetalesPageNote extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 20),
-
-              // // Date (if available)
-              // if (note.createdDate != null) ...[
-              //   const SizedBox(height: 10),
-              //   Text(
-              //     "Created: ${DateTime.parse(note.createdDate!).toLocal()}",
-              //     style: TextStyle(fontSize: 14, color: Colors.white70),
-              //   ),
-              //   const SizedBox(height: 20),
-              // ],
-
               // Content
               Text(
                 note.content,
@@ -82,5 +81,13 @@ class DetalesPageNote extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String _formatDate(DateTime date) {
+    return '${date.day}/${date.month}/${date.year} at ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
+  }
+
+  int _getHash(String input) {
+    return input.codeUnits.fold(0, (prev, element) => prev + element);
   }
 }

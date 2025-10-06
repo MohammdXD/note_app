@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "EnterContent": MessageLookupByLibrary.simpleMessage(
+      "Please enter a content",
+    ),
+    "EnterTitle": MessageLookupByLibrary.simpleMessage("Please enter a title"),
     "Next": MessageLookupByLibrary.simpleMessage("Next"),
     "NoteContent": MessageLookupByLibrary.simpleMessage("Note Content"),
     "NoteTitle": MessageLookupByLibrary.simpleMessage("Note Title"),
@@ -56,5 +60,6 @@ class MessageLookup extends MessageLookupByLibrary {
       "Sync Across Devices",
     ),
     "title_splash4": MessageLookupByLibrary.simpleMessage("Get Started"),
+    "update": MessageLookupByLibrary.simpleMessage("Update"),
   };
 }

@@ -18,5 +18,8 @@
   "description_splash4": "Begin your journey to better organization",
   "Skip": "Skip",
   "Next": "Next",
-  "Start": "Start"
+  "Start": "Start",
+  "update": "Update",
+  "EnterTitle": "Please enter a title",
+  "EnterContent": "Please enter a content"
 }
