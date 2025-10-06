@@ -228,6 +228,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Created At`
+  String get createdAt {
+    return Intl.message('Created At', name: 'createdAt', desc: '', args: []);
+  }
+
+  /// `Updated At`
+  String get updatedAt {
+    return Intl.message('Updated At', name: 'updatedAt', desc: '', args: []);
+  }
+
+  /// `at`
+  String get at {
+    return Intl.message('at', name: 'at', desc: '', args: []);
+  }
+
+  /// `Note Options`
+  String get noteOptions {
+    return Intl.message(
+      'Note Options',
+      name: 'noteOptions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `What would you like to do with this note?`
+  String get optionsTile {
+    return Intl.message(
+      'What would you like to do with this note?',
+      name: 'optionsTile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get Edit {
+    return Intl.message('Edit', name: 'Edit', desc: '', args: []);
+  }
+
+  /// `Delete`
+  String get Delete {
+    return Intl.message('Delete', name: 'Delete', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get Cancel {
+    return Intl.message('Cancel', name: 'Cancel', desc: '', args: []);
+  }
+
+  /// `m ago`
+  String get m_ago {
+    return Intl.message('m ago', name: 'm_ago', desc: '', args: []);
+  }
+
+  /// `h ago`
+  String get h_ago {
+    return Intl.message('h ago', name: 'h_ago', desc: '', args: []);
+  }
+
+  /// `d ago`
+  String get d_ago {
+    return Intl.message('d ago', name: 'd_ago', desc: '', args: []);
+  }
+
+  /// `Yesterday`
+  String get Yesterday {
+    return Intl.message('Yesterday', name: 'Yesterday', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

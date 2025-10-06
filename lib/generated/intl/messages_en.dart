@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "Cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "Delete": MessageLookupByLibrary.simpleMessage("Delete"),
+    "Edit": MessageLookupByLibrary.simpleMessage("Edit"),
     "EnterContent": MessageLookupByLibrary.simpleMessage(
       "Please enter a content",
     ),
@@ -31,11 +34,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "NoteTitle": MessageLookupByLibrary.simpleMessage("Note Title"),
     "Skip": MessageLookupByLibrary.simpleMessage("Skip"),
     "Start": MessageLookupByLibrary.simpleMessage("Start"),
+    "Yesterday": MessageLookupByLibrary.simpleMessage("Yesterday"),
     "add": MessageLookupByLibrary.simpleMessage("Add New"),
     "addNote": MessageLookupByLibrary.simpleMessage("Add Note"),
+    "at": MessageLookupByLibrary.simpleMessage("at"),
     "backNote": MessageLookupByLibrary.simpleMessage(
       "No notes yet Tap + to add one",
     ),
+    "createdAt": MessageLookupByLibrary.simpleMessage("Created At"),
+    "d_ago": MessageLookupByLibrary.simpleMessage("d ago"),
     "description_splash1": MessageLookupByLibrary.simpleMessage(
       "Capture ideas our intuitive note-taking app",
     ),
@@ -48,7 +55,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "description_splash4": MessageLookupByLibrary.simpleMessage(
       "Begin your journey to better organization",
     ),
+    "h_ago": MessageLookupByLibrary.simpleMessage("h ago"),
     "language": MessageLookupByLibrary.simpleMessage("language"),
+    "m_ago": MessageLookupByLibrary.simpleMessage("m ago"),
+    "noteOptions": MessageLookupByLibrary.simpleMessage("Note Options"),
+    "optionsTile": MessageLookupByLibrary.simpleMessage(
+      "What would you like to do with this note?",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "title": MessageLookupByLibrary.simpleMessage("My Notes"),
     "titleDetails": MessageLookupByLibrary.simpleMessage("My Notes"),
@@ -61,5 +74,6 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "title_splash4": MessageLookupByLibrary.simpleMessage("Get Started"),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
+    "updatedAt": MessageLookupByLibrary.simpleMessage("Updated At"),
   };
 }

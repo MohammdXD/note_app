@@ -21,5 +21,17 @@
   "Start": "Start",
   "update": "Update",
   "EnterTitle": "Please enter a title",
-  "EnterContent": "Please enter a content"
+  "EnterContent": "Please enter a content",
+  "createdAt": "Created At",
+  "updatedAt": "Updated At",
+  "at": "at",
+  "noteOptions": "Note Options",
+  "optionsTile": "What would you like to do with this note?",
+  "Edit": "Edit",
+  "Delete": "Delete",
+  "Cancel": "Cancel",
+  "m_ago": "m ago",
+  "h_ago": "h ago",
+  "d_ago": "d ago",
+  "Yesterday": "Yesterday"
 }

@@ -49,11 +49,11 @@ class DetalesPageNote extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Created: ${_formatDate(note.createdAt)}",
+                "${S.of(context).createdAt}: ${_formatDate(note.createdAt)}",
                 style: TextStyle(fontSize: 14, color: Colors.white70),
               ),
               Text(
-                "Updated: ${_formatDate(note.updatedAt)}",
+                "${S.of(context).updatedAt}: ${_formatDate(note.updatedAt)}",
                 style: TextStyle(fontSize: 14, color: Colors.white70),
               ),
               SizedBox(height: 20),
@@ -84,7 +84,7 @@ class DetalesPageNote extends StatelessWidget {
   }
 
   String _formatDate(DateTime date) {
-    return '${date.day}/${date.month}/${date.year} at ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}';
+    return "${date.day}/${date.month}/${date.year} - ${date.hour.toString().padLeft(2, '0')}:${date.minute.toString().padLeft(2, '0')}";
   }
 
   int _getHash(String input) {

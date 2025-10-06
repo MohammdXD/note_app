@@ -414,15 +414,15 @@ class _NotePageState extends State<NotePage> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Note Options'),
-          content: Text('What would you like to do with this note?'),
+          title: Text(S.of(context).noteOptions),
+          content: Text(S.of(context).optionsTile),
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
                 _editNote(note);
               },
-              child: Text('Edit'),
+              child: Text(S.of(context).Edit),
             ),
             TextButton(
               onPressed: () {
@@ -431,13 +431,16 @@ class _NotePageState extends State<NotePage> {
                   _deleteNote(note.id!);
                 }
               },
-              child: Text('Delete', style: TextStyle(color: Colors.red)),
+              child: Text(
+                S.of(context).Delete,
+                style: TextStyle(color: Colors.red),
+              ),
             ),
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Cancel'),
+              child: Text(S.of(context).Cancel),
             ),
           ],
         );

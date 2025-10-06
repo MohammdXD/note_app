@@ -22,6 +22,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "Cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+    "Delete": MessageLookupByLibrary.simpleMessage("حذف"),
+    "Edit": MessageLookupByLibrary.simpleMessage("تعديل"),
     "EnterContent": MessageLookupByLibrary.simpleMessage("ادخل محتوى الملاحظة"),
     "EnterTitle": MessageLookupByLibrary.simpleMessage("ادخل عنوان الملاحظة"),
     "Next": MessageLookupByLibrary.simpleMessage("التالي"),
@@ -29,11 +32,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "NoteTitle": MessageLookupByLibrary.simpleMessage("عنوان الملاحظة"),
     "Skip": MessageLookupByLibrary.simpleMessage("تخطي"),
     "Start": MessageLookupByLibrary.simpleMessage("ابدأ"),
+    "Yesterday": MessageLookupByLibrary.simpleMessage("اليوم الماضي"),
     "add": MessageLookupByLibrary.simpleMessage("إضافة جديدة"),
     "addNote": MessageLookupByLibrary.simpleMessage("إضافة الملاحظة"),
+    "at": MessageLookupByLibrary.simpleMessage("في"),
     "backNote": MessageLookupByLibrary.simpleMessage(
       "لا توجد ملاحظات بعد، اضغط على + لإضافة واحدة",
     ),
+    "createdAt": MessageLookupByLibrary.simpleMessage("انشيء في"),
+    "d_ago": MessageLookupByLibrary.simpleMessage("قبل يوم"),
     "description_splash1": MessageLookupByLibrary.simpleMessage(
       "سجّل أفكارك مع تطبيقنا السهل لتدوين الملاحظات",
     ),
@@ -46,7 +53,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "description_splash4": MessageLookupByLibrary.simpleMessage(
       "ابدأ رحلتك نحو تنظيم أفضل",
     ),
+    "h_ago": MessageLookupByLibrary.simpleMessage("قبل ساعة"),
     "language": MessageLookupByLibrary.simpleMessage("اللغة"),
+    "m_ago": MessageLookupByLibrary.simpleMessage("قبل دقيقة"),
+    "noteOptions": MessageLookupByLibrary.simpleMessage("خيارات الملاحظة"),
+    "optionsTile": MessageLookupByLibrary.simpleMessage(
+      "ماذا تريد أن تفعل بهذه المذكرة؟",
+    ),
     "settings": MessageLookupByLibrary.simpleMessage("الاعدادات"),
     "title": MessageLookupByLibrary.simpleMessage("ملاحظاتي"),
     "titleDetails": MessageLookupByLibrary.simpleMessage("تفاصيل الملاحظة"),
@@ -55,5 +68,6 @@ class MessageLookup extends MessageLookupByLibrary {
     "title_splash3": MessageLookupByLibrary.simpleMessage("مزامنة بين الأجهزة"),
     "title_splash4": MessageLookupByLibrary.simpleMessage("ابدأ"),
     "update": MessageLookupByLibrary.simpleMessage("تحديث"),
+    "updatedAt": MessageLookupByLibrary.simpleMessage("تحديث في"),
   };
 }
